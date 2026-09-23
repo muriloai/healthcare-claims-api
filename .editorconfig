@@ -1,0 +1,14 @@
+root = true
+
+[*]
+indent_style = space
+indent_size = 4
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.cs]
+csharp_new_line_before_open_brace = methods, types, control_blocks, lambdas
+csharp_preserve_single_line_blocks = true
+csharp_preserve_single_line_statements = false
+csharp_style_expression_bodied_lambdas = when_on_single_line:suggestion

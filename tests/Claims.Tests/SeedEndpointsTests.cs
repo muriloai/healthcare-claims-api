@@ -12,9 +12,9 @@ public sealed class SeedEndpointsTests : IClassFixture<TestApplicationFactory>
     [Fact]
     public async Task Beneficiarios_returns_seed_data()
     {
-        var response = await client.GetAsync("/beneficiarios");
+        var response = await client.GetAsync("/beneficiarios", TestContext.Current.CancellationToken);
         response.EnsureSuccessStatusCode();
-        var body = await response.Content.ReadAsStringAsync();
+        var body = await response.Content.ReadAsStringAsync(TestContext.Current.CancellationToken);
         Assert.Contains("Beneficiário Exemplo", body);
         Assert.Contains("BEN-0001", body);
     }
@@ -22,9 +22,9 @@ public sealed class SeedEndpointsTests : IClassFixture<TestApplicationFactory>
     [Fact]
     public async Task Prestadores_returns_seed_data()
     {
-        var response = await client.GetAsync("/prestadores");
+        var response = await client.GetAsync("/prestadores", TestContext.Current.CancellationToken);
         response.EnsureSuccessStatusCode();
-        Assert.Contains("Clínica Exemplo", await response.Content.ReadAsStringAsync());
+        Assert.Contains("Clínica Exemplo", await response.Content.ReadAsStringAsync(TestContext.Current.CancellationToken));
     }
 }
 
