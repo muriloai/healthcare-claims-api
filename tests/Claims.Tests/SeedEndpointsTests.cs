@@ -1,30 +1,38 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.Configuration;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+[assembly: Parallelize(Scope = ExecutionScope.MethodLevel)]
 
 namespace Claims.Tests;
 
-public sealed class SeedEndpointsTests : IClassFixture<TestApplicationFactory>
+[TestClass]
+public sealed class SeedEndpointsTests
 {
-    private readonly HttpClient client;
-    public SeedEndpointsTests(TestApplicationFactory factory) => client = factory.CreateClient();
+    public TestContext TestContext { get; set; } = null!;
 
-    [Fact]
+    [TestMethod]
     public async Task Beneficiarios_returns_seed_data()
     {
-        var response = await client.GetAsync("/beneficiarios", TestContext.Current.CancellationToken);
+        using var factory = new TestApplicationFactory();
+        using var client = factory.CreateClient();
+        using var response = await client.GetAsync("/beneficiarios", TestContext.CancellationToken);
         response.EnsureSuccessStatusCode();
-        var body = await response.Content.ReadAsStringAsync(TestContext.Current.CancellationToken);
-        Assert.Contains("Beneficiário Exemplo", body);
-        Assert.Contains("BEN-0001", body);
+        var body = await response.Content.ReadAsStringAsync(TestContext.CancellationToken);
+        StringAssert.Contains(body, "Beneficiário Exemplo");
+        StringAssert.Contains(body, "BEN-0001");
     }
 
-    [Fact]
+    [TestMethod]
     public async Task Prestadores_returns_seed_data()
     {
-        var response = await client.GetAsync("/prestadores", TestContext.Current.CancellationToken);
+        using var factory = new TestApplicationFactory();
+        using var client = factory.CreateClient();
+        using var response = await client.GetAsync("/prestadores", TestContext.CancellationToken);
         response.EnsureSuccessStatusCode();
-        Assert.Contains("Clínica Exemplo", await response.Content.ReadAsStringAsync(TestContext.Current.CancellationToken));
+        var body = await response.Content.ReadAsStringAsync(TestContext.CancellationToken);
+        StringAssert.Contains(body, "Clínica Exemplo");
     }
 }
 
