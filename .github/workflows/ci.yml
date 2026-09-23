@@ -15,4 +15,4 @@ jobs:
       - run: dotnet tool restore
       - run: dotnet restore
       - run: dotnet build --no-restore --configuration Release
-      - run: dotnet test --no-build --configuration Release --logger trx
+      - run: dotnet test --no-build --configuration Release
