@@ -3,4 +3,5 @@ obj/
 *.db
 *.db-shm
 *.db-wal
+src/Claims.Api/App_Data/
 .vs/

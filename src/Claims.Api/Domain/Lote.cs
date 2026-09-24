@@ -1,10 +1,10 @@
 namespace Claims.Api.Domain;
 
-public enum StatusLote
+internal enum StatusLote
 {
     Aberto, Fechado
 }
-public sealed class Lote
+internal sealed class Lote
 {
     public Guid Id { get; set; } = Guid.CreateVersion7();
     public StatusLote Status { get; set; }

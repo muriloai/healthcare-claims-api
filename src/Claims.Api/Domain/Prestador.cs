@@ -1,6 +1,6 @@
 namespace Claims.Api.Domain;
 
-public sealed class Prestador
+internal sealed class Prestador
 {
     public int Id { get; set; }
     public required string NomeFicticio { get; set; }

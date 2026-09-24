@@ -3,6 +3,6 @@
     <Project Path="src/Claims.Api/Claims.Api.csproj" />
   </Folder>
   <Folder Name="/tests/">
-    <Project Path="tests/Claims.Tests/Claims.Tests.csproj" />
+    <Project Path="tests/Claims.IntegrationTests/Claims.IntegrationTests.csproj" />
   </Folder>
 </Solution>

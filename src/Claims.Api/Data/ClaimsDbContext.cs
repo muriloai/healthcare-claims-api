@@ -2,7 +2,7 @@ using Claims.Api.Domain;
 using Microsoft.EntityFrameworkCore;
 namespace Claims.Api.Data;
 
-public sealed class ClaimsDbContext(DbContextOptions<ClaimsDbContext> options) : DbContext(options)
+internal sealed class ClaimsDbContext(DbContextOptions<ClaimsDbContext> options) : DbContext(options)
 {
     public DbSet<Beneficiario> Beneficiarios => Set<Beneficiario>();
     public DbSet<Prestador> Prestadores => Set<Prestador>();

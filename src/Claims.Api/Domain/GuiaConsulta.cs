@@ -1,6 +1,6 @@
 namespace Claims.Api.Domain;
 
-public sealed class GuiaConsulta
+internal sealed class GuiaConsulta
 {
     public Guid Id { get; set; } = Guid.CreateVersion7();
     public int BeneficiarioId { get; set; }

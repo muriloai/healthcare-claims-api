@@ -1,6 +1,6 @@
 namespace Claims.Api.Domain;
 
-public sealed class Beneficiario
+internal sealed class Beneficiario
 {
     public int Id { get; set; }
     public required string NomeFicticio { get; set; }

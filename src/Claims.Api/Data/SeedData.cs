@@ -2,9 +2,9 @@ using Claims.Api.Domain;
 using Microsoft.EntityFrameworkCore;
 namespace Claims.Api.Data;
 
-public static class SeedData
+internal static class SeedData
 {
-    public static async Task InitializeAsync(ClaimsDbContext db, CancellationToken ct = default)
+    internal static async Task InitializeAsync(ClaimsDbContext db, CancellationToken ct = default)
     {
         if (!await db.Beneficiarios.AnyAsync(ct))
             db.Beneficiarios.Add(
